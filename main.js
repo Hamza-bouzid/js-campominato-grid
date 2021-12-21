@@ -8,23 +8,22 @@ let count = 0;
 function cellCount() {
   for (let i = 1; i <= count; i++) {
     contenuto += `
-      <div class="box d-flex justify-content-center align-items-center">${i}</div>
+      <div class="box d-flex justify-content-center align-items-center" id="item-${i}">${i}</div>
       `;
   }
 }
 
 function active() {
-  const box = document.querySelectorAll(".box");
-  for (let i = 0; i <= box.length; i++) {
+  let box = document.querySelectorAll(".box");
+  for (let i = 0; i < box.length; i++) {
     box[i].addEventListener("click", function () {
-      box[i].classList.add("item-active");
+      this.classList.add("item-active");
     });
   }
 }
 
 easy.addEventListener("click", function (e) {
-  content.classList.remove("normal");
-  content.classList.remove("hard");
+  content.classList.remove("normal", "hard");
   content.classList.add("animazione-griglia");
   contenuto = "";
   count = 100;
